@@ -10,6 +10,8 @@ Two convolutional neural networks trained and compared on the CIFAR-10 dataset (
 | Data augmentation | Yes (random flip, rotation, zoom) | No |
 | Regularization | BatchNorm + Dropout (0.25–0.5) | BatchNorm + Dropout (0.3–0.5) |
 | Optimizer | Adam (lr=0.001) | Adam (lr=0.001) |
+| Parameters | 1.35M | 4.46M |
+| **Test accuracy** | **86.72%** | **86.50%** |
 
 Both models are trained with early stopping, learning-rate reduction on plateau, and checkpointing of the best weights (by validation accuracy).
 
@@ -34,4 +36,4 @@ TensorFlow / Keras, scikit-learn, Seaborn, Matplotlib
 
 ## Notes
 
-The main question this project explores: does a deeper network with data augmentation generalize better than a shallower, wider network trained without augmentation? The confusion matrices and classification reports make it possible to see not just overall accuracy but which classes (e.g. cat vs. dog) are hardest to separate.
+The main question this project explores: does a deeper network with data augmentation generalize better than a shallower, wider network trained without augmentation? Interestingly, the two ended up close (86.72% vs. 86.50%) despite Model 2 having over 3x the parameters — suggesting augmentation and depth compensated for parameter count here. The confusion matrices and classification reports make it possible to see not just overall accuracy but which classes (e.g. cat vs. dog) are hardest to separate.
